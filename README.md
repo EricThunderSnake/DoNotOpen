@@ -1,5 +1,5 @@
 # DoNotOpen
-Pirate Software Game Jam 16
+Pirate Software Game Jam 16 - Theme: You Are The Weapon
 
 Credits:
 
