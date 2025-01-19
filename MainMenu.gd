@@ -14,7 +14,7 @@ func _ready():
 	quitButton.pressed.connect(_on_quit_button_pressed)
 	if test_on_boot:
 		test_on_boot = false
-		get_tree().change_scene_to_file("res://Levels/Test/pathfinding.tscn")
+		get_tree().change_scene_to_file("res://Levels/Test/test_environ.tscn")
 	
 
 
@@ -23,7 +23,7 @@ func _process(delta):
 	pass
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Levels/Test/pathfinding.tscn")
+	get_tree().change_scene_to_file("res://Levels/Test/test_environ.tscn")
 
 func _on_settings_button_pressed() -> void:
 	# to be implemented

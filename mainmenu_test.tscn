@@ -17,13 +17,13 @@ theme_override_constants/margin_top = 400
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 400
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainMenu" type="VBoxContainer" parent="."]
 layout_mode = 2
 theme = SubResource("Theme_tr3i0")
 script = ExtResource("1_e3pf3")
 test_on_boot = true
 
-[node name="Play" type="Button" parent="VBoxContainer"]
+[node name="Play" type="Button" parent="MainMenu"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Quit")
 focus_neighbor_top = NodePath("../Quit")
@@ -33,7 +33,7 @@ focus_next = NodePath("../Settings")
 focus_previous = NodePath("../Quit")
 text = "Play"
 
-[node name="Settings" type="Button" parent="VBoxContainer"]
+[node name="Settings" type="Button" parent="MainMenu"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Play")
 focus_neighbor_top = NodePath("../Play")
@@ -43,9 +43,9 @@ focus_next = NodePath("../Quit")
 focus_previous = NodePath("../Play")
 text = "Settings"
 
-[node name="Button2" type="Button" parent="VBoxContainer/Settings"]
+[node name="Button2" type="Button" parent="MainMenu/Settings"]
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="MainMenu"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Settings")
 focus_neighbor_top = NodePath("../Settings")
