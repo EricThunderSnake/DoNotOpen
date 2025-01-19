@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://cwwcthwxxh4x3"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_sxwdx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ida35"]
+energy_multiplier = 0.8
+
+[sub_resource type="Sky" id="Sky_jken0"]
+sky_material = SubResource("ProceduralSkyMaterial_ida35")
+
+[sub_resource type="Environment" id="Environment_pmaes"]
+background_mode = 2
+background_color = Color(0.0115899, 0.00853991, 0.0274126, 1)
+sky = SubResource("Sky_jken0")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_inbyj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k13xs"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r1mq3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fmrs1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ge677"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r2r5j"]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_pmaes")
+camera_attributes = SubResource("CameraAttributesPractical_inbyj")
+
+[node name="SkyLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999885, 0.0151663, 0, -0.0151663, 0.999885, 0, 0, 0)
+light_color = Color(0.741605, 0.475084, 0.0247729, 1)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 16.0
+
+[node name="Ground" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_k13xs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape3D_r1mq3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/CollisionShape3D"]
+transform = Transform3D(512, 0, 0, 0, 512, 0, 0, 0, 512, 0, 0, 0)
+mesh = SubResource("PlaneMesh_fmrs1")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.69203, 0.721869, 0, -0.721869, 0.69203, 0, 13.6816, 9.5174)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_sxwdx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CharacterBody3D"]
+shape = SubResource("CylinderShape3D_ge677")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/CharacterBody3D"]
+mesh = SubResource("CylinderMesh_r2r5j")
