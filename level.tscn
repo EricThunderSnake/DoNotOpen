@@ -1,30 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://883bfr0ypc2x"]
 
-[ext_resource type="Script" path="res://Scenes/Main.gd" id="1_s2k1e"]
-[ext_resource type="Script" path="res://Scenes/GunController.gd" id="3_pb2fs"]
-[ext_resource type="PackedScene" uid="uid://c8cw6ls5avhqs" path="res://Scenes/Gun.tscn" id="4_fw50f"]
-
-[sub_resource type="GDScript" id="GDScript_n51rn"]
-script/source = "extends CharacterBody3D
-
-var speed = 8
-#Executed every frames:
-func _process(delta):
-	velocity = Vector3()
-	
-	
-	if Input.is_action_pressed(\"move_right\"):
-		velocity.x += 1
-	if Input.is_action_pressed(\"move_left\"):
-		velocity.x -= 1
-	if Input.is_action_pressed(\"move_up\"):
-		velocity.z -= 1
-	if Input.is_action_pressed(\"move_down\"):
-		velocity.z += 1
-	
-	velocity = velocity.normalized()*speed
-	move_and_slide()
-"
+[ext_resource type="Script" path="res://Main.gd" id="1_s2k1e"]
+[ext_resource type="Script" path="res://Player.gd" id="2_mpp3r"]
+[ext_resource type="Script" path="res://GunController.gd" id="3_pb2fs"]
+[ext_resource type="PackedScene" uid="uid://c8cw6ls5avhqs" path="res://Gun.tscn" id="4_fw50f"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ow0sw"]
 
@@ -41,7 +20,11 @@ script = ExtResource("1_s2k1e")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.3, 0, 0, 0, 1, 0, 2.66384, 0)
-script = SubResource("GDScript_n51rn")
+script = ExtResource("2_mpp3r")
+
+[node name="GunController" type="Node" parent="Player"]
+script = ExtResource("3_pb2fs")
+StartingWeapon = ExtResource("4_fw50f")
 
 [node name="Body" type="MeshInstance3D" parent="Player"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
@@ -56,10 +39,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4u5d0")
 
 [node name="Hand" type="Marker3D" parent="Player/Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.487, 0.282, 0)
-
-[node name="GunController" type="Node" parent="."]
-script = ExtResource("3_pb2fs")
-StartingWeapon = ExtResource("4_fw50f")
 
 [node name="Ground" type="CSGBox3D" parent="."]
 transform = Transform3D(22, 0, 0, 0, 2, 0, 0, 0, 22, 0, 0, 0)
