@@ -6,7 +6,7 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_r2r5j"]
 
-[node name="Player" type="RigidBody3D"]
+[node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_5r7de")
 

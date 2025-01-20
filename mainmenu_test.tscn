@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt8op2dm7j25r"]
+[gd_scene load_steps=5 format=3 uid="uid://dt8op2dm7j25r"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_e3pf3"]
+[ext_resource type="Script" path="res://Debug.gd" id="1_tepdq"]
 [ext_resource type="Script" path="res://Quit.gd" id="2_t1kn7"]
 
 [sub_resource type="Theme" id="Theme_tr3i0"]
 Button/font_sizes/font_size = 40
 
-[node name="MenuContainer" type="MarginContainer"]
+[node name="Debug" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,12 +17,12 @@ theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 400
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 400
+script = ExtResource("1_tepdq")
 
 [node name="MainMenu" type="VBoxContainer" parent="."]
 layout_mode = 2
 theme = SubResource("Theme_tr3i0")
 script = ExtResource("1_e3pf3")
-test_on_boot = true
 
 [node name="Play" type="Button" parent="MainMenu"]
 layout_mode = 2
@@ -44,6 +45,7 @@ focus_previous = NodePath("../Play")
 text = "Settings"
 
 [node name="Button2" type="Button" parent="MainMenu/Settings"]
+layout_mode = 0
 
 [node name="Quit" type="Button" parent="MainMenu"]
 layout_mode = 2

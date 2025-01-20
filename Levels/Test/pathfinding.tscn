@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://0uorj88r5rnr"]
+[gd_scene load_steps=12 format=3 uid="uid://0uorj88r5rnr"]
 
+[ext_resource type="PackedScene" uid="uid://pvqt43lxq2nm" path="res://Player/Player.tscn" id="1_f2ovd"]
 [ext_resource type="PackedScene" uid="uid://cq5dw6tsdy5s5" path="res://NPC/NPC.tscn" id="1_np08h"]
-[ext_resource type="PackedScene" uid="uid://d15672pv2gjus" path="res://Target/NPC_target.tscn" id="2_047xe"]
+[ext_resource type="PackedScene" uid="uid://d15672pv2gjus" path="res://Target/Target.tscn" id="2_047xe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ida35"]
 energy_multiplier = 0.8
@@ -30,6 +31,8 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 environment = SubResource("Environment_pmaes")
 camera_attributes = SubResource("CameraAttributesPractical_inbyj")
 
+[node name="Player" parent="." instance=ExtResource("1_f2ovd")]
+
 [node name="SkyLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999885, 0.0151663, 0, -0.0151663, 0.999885, 0, 0, 0)
 light_color = Color(0.741605, 0.475084, 0.0247729, 1)
@@ -56,6 +59,7 @@ skeleton = NodePath("../../CollisionShape3D")
 transform = Transform3D(1, 0, 0, 0, 0.69203, 0.721869, 0, -0.721869, 0.69203, 0, 13.6816, 9.5174)
 
 [node name="NPC" parent="Node3D" node_paths=PackedStringArray("target") instance=ExtResource("1_np08h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5.29523)
 target = NodePath("../../Target")
 
 [node name="Target" parent="." node_paths=PackedStringArray("next_target") instance=ExtResource("2_047xe")]

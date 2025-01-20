@@ -4,17 +4,15 @@ extends VBoxContainer
 @onready var settingsButton = $Settings
 @onready var quitButton = $Quit
 
-@export var test_on_boot = false
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	playButton.pressed.connect(_on_play_button_pressed)
 	settingsButton.pressed.connect(_on_settings_button_pressed)
 	quitButton.pressed.connect(_on_quit_button_pressed)
-	if test_on_boot:
-		test_on_boot = false
-		get_tree().change_scene_to_file("res://Levels/Test/test_environ.tscn")
+	if Debug.load_game_on_start:
+		get_tree().change_scene_to_file.call_deferred("res://Levels/Test/test_environ.tscn")
+		# call deferred because scene change should be done when ready functions are complete
+		# the scene tree is still being constructed during _ready calls, so it is unsafe otherwise
 	
 
 

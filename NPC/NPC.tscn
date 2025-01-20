@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq5dw6tsdy5s5"]
+[gd_scene load_steps=6 format=3 uid="uid://cq5dw6tsdy5s5"]
 
 [ext_resource type="Script" path="res://NPC/npc.gd" id="1_8mtn4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ge677"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04axy"]
+albedo_color = Color(0.528898, 0, 0.234589, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_r2r5j"]
+material = SubResource("StandardMaterial3D_04axy")
 
 [sub_resource type="GDScript" id="GDScript_1qoyp"]
 script/source = "extends NavigationAgent3D

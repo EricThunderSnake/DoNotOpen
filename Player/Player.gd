@@ -4,9 +4,21 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+var player_target : Target
+
+func _ready():
+	player_target = Target.new()
+	player_target.name = "Player Target"
+	player_target.SetNextTarget(player_target)
+	add_child(player_target)
 
 func _physics_process(delta):
 	# Add the gravity.
+	
+	if Debug.quit_on_escape:
+		if Input.is_action_just_pressed("Escape"):
+			get_tree().quit()
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
