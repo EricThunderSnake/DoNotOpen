@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8cw6ls5avhqs"]
+
+[ext_resource type="Script" path="res://Scenes/Gun.gd" id="1_1rc0w"]
+[ext_resource type="PackedScene" uid="uid://cc5r4qtfyfig2" path="res://Scenes/Bullet.tscn" id="2_tjh7t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pqgn8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osqm2"]
+albedo_color = Color(0.108225, 0.108225, 0.108225, 1)
+
+[node name="Spatial" type="Node3D"]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0, 0.761656)
+script = ExtResource("1_1rc0w")
+Bullet = ExtResource("2_tjh7t")
+
+[node name="Barrel" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_pqgn8")
+surface_material_override/0 = SubResource("StandardMaterial3D_osqm2")
+
+[node name="Handle" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.96967, -0.559839, 0, 1.67952, 0.323223, 0, 0, 0, 1, -1.31174, -1.02401, 0)
+mesh = SubResource("BoxMesh_pqgn8")
+surface_material_override/0 = SubResource("StandardMaterial3D_osqm2")
+
+[node name="Magazine" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.818822, 0, 0, 0, 0.73115, 0, 0, 0, 1, 0.631932, -0.741641, 0)
+mesh = SubResource("BoxMesh_pqgn8")
+surface_material_override/0 = SubResource("StandardMaterial3D_osqm2")
+
+[node name="Muzzle" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.47985, 0, -6.46865e-08)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
