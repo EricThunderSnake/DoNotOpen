@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc5r4qtfyfig2"]
+
+[ext_resource type="Script" path="res://Scenes/Bullet.gd" id="1_ns13d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qb4pw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_re0lh"]
+albedo_color = Color(0.0545738, 0.0545738, 0.0545738, 1)
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_ns13d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("BoxMesh_qb4pw")
+surface_material_override/0 = SubResource("StandardMaterial3D_re0lh")
