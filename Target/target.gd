@@ -17,6 +17,7 @@ static func GetName(target:Target) -> String:
 		return target.name
 
 static func GetPosition(target:Target) -> Vector3:
+	#if you end up looking here, it's because a target hasnt been set for another target or the player
 	if target.get_parent().name == "Player":
 		return target.get_parent().position
 	else:

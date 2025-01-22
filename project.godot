@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DoNotOpen"
-run/main_scene="res://Levels/Test/pathfinding.tscn"
+run/main_scene="res://Levels/Test/item_test.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
 [autoload]
@@ -20,8 +20,8 @@ Debug="*res://Debug.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=720
+window/size/viewport_height=576
 
 [input]
 
