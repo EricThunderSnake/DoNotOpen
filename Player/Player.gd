@@ -18,6 +18,10 @@ func _ready():
 	
 	interact_area.body_entered.connect(on_body_enter)
 	interact_area.body_exited.connect(on_body_exit)
+	
+	if !OS.is_debug_build():
+		var interact_area_mesh = $Area3D/MeshInstance3D
+		interact_area_mesh.queue_free()
 
 func _physics_process(delta):
 	# Add the gravity.
