@@ -4,6 +4,10 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+signal pick_up_items
+
+
+@onready var interact_area:Area3D = $Area3D
 var player_target : Target
 
 func _ready():
@@ -11,6 +15,9 @@ func _ready():
 	player_target.name = "Player Target"
 	player_target.SetNextTarget(player_target)
 	add_child(player_target)
+	
+	interact_area.body_entered.connect(on_body_enter)
+	interact_area.body_exited.connect(on_body_exit)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -25,6 +32,9 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
+	if Input.is_action_just_pressed("Interact"):
+		pick_up_items.emit()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -38,3 +48,13 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+func on_body_enter(body:Node3D) -> void:
+	if body is Item:
+		body.show_ui_value = true
+		body.item_changed.emit(body.id, body.show_ui, body.show_ui_value)
+
+func on_body_exit(body:Node3D) -> void:
+	if body is Item:
+		body.show_ui_value = false
+		body.item_changed.emit(body.id, body.show_ui, body.show_ui_value)

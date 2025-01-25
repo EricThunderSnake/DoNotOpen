@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cq5dw6tsdy5s5"]
+[gd_scene load_steps=5 format=3 uid="uid://cq5dw6tsdy5s5"]
 
 [ext_resource type="Script" path="res://Item/item.gd" id="1_asvh2"]
 
@@ -10,20 +10,6 @@ albedo_color = Color(0.157263, 0.314679, 0.288591, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_r2r5j"]
 material = SubResource("StandardMaterial3D_04axy")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_5xqs3"]
-height = 0.001
-radius = 2.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcuv4"]
-transparency = 1
-albedo_color = Color(0.333333, 0.521569, 0.658824, 0.407843)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_fp5lk"]
-material = SubResource("StandardMaterial3D_xcuv4")
-top_radius = 2.5
-bottom_radius = 2.5
-height = 0.001
-
 [node name="Item" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_asvh2")
@@ -33,11 +19,3 @@ shape = SubResource("CylinderShape3D_ge677")
 
 [node name="ItemMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_r2r5j")
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("CylinderShape3D_5xqs3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-mesh = SubResource("CylinderMesh_fp5lk")
