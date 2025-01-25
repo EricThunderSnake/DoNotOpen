@@ -29,6 +29,9 @@ camera_attributes = SubResource("CameraAttributesPractical_inbyj")
 
 [node name="Player" parent="." instance=ExtResource("1_m6k7p")]
 
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.69203, 0.721869, 0, -0.721869, 0.69203, 0, 12.6816, 9.5174)
+
 [node name="SkyLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999885, 0.0151663, 0, -0.0151663, 0.999885, 0, 0, 0)
 light_color = Color(0.741605, 0.475084, 0.0247729, 1)
@@ -46,11 +49,6 @@ transform = Transform3D(512, 0, 0, 0, 512, 0, 0, 0, 512, 0, 0, 0)
 mesh = SubResource("PlaneMesh_fmrs1")
 skeleton = NodePath("../CollisionShape3D")
 
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 0.69203, 0.721869, 0, -0.721869, 0.69203, 0, 13.6816, 9.5174)
-
 [node name="ItemManager" type="Node" parent="."]
 script = ExtResource("2_n6kqd")
 
@@ -58,11 +56,11 @@ script = ExtResource("2_n6kqd")
 
 [node name="Pick Up Text" type="RichTextLabel" parent="ItemManager/ItemUI"]
 visible = false
-offset_left = 237.0
-offset_top = 236.0
-offset_right = 480.0
-offset_bottom = 261.0
-text = "Press something to do nothing"
+offset_left = 234.0
+offset_top = 473.0
+offset_right = 477.0
+offset_bottom = 498.0
+text = "Press E to pick up items"
 
 [node name="PresentItems" type="Node" parent="ItemManager"]
 

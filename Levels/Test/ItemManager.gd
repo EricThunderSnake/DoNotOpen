@@ -36,7 +36,8 @@ func _process(delta):
 func update_item_dict(item_id:int, flag_name:String, flag_value:bool) -> void:
 	if item_id in item_dict:
 		item_dict[item_id][flag_name] = flag_value
-		check_show_ui()
+	
+	check_show_ui()
 
 func check_show_ui() -> void:
 	for id in item_dict:
