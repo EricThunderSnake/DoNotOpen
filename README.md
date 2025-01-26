@@ -7,8 +7,8 @@ Credits:
 
 Level & Narrative Design: AMoellerGameDev
 
-Art: Samson418
+Art: [Samson418](https://sam418.itch.io/)
 
-Music: (Kanin's Github)
+Music: Ascetimancer
 
 Programming: Vej333, EricThunderSnake
