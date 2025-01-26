@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
 
-
+<<<<<<< Updated upstream
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 
 func _physics_process(delta):
-	velocity = Vector3(0,velocity.y,0)
+	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -27,3 +27,33 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+=======
+var speed = 8
+#Executed every frames:
+func _process(delta):
+	player_run(delta)
+	player_shoot(delta)
+	move_and_slide()
+
+#Ground Movement
+func player_run(delta):
+	velocity = Vector3()
+	
+	if Input.is_action_pressed("MoveRight"):
+		velocity.x += 1
+	if Input.is_action_pressed("MoveLeft"):
+		velocity.x -= 1
+	if Input.is_action_pressed("MoveForward"):
+		velocity.z -= 1
+	if Input.is_action_pressed("MoveBackward"):
+		velocity.z += 1
+	
+	velocity = velocity.normalized()*speed
+
+
+#Shooting
+func player_shoot(delta):
+	if Input.is_action_pressed("Interact"):
+		print("shooting")
+		gun_controller.shoot()
+>>>>>>> Stashed changes

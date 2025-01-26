@@ -39,6 +39,7 @@ light_volumetric_fog_energy = 16.0
 physics_material_override = SubResource("PhysicsMaterial_k13xs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_r1mq3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/CollisionShape3D"]
