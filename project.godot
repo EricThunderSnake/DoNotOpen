@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="DoNotOpen"
-run/main_scene="res://test_environ.tscn"
 run/main_scene="res://Menus/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
