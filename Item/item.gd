@@ -13,8 +13,9 @@ const show_ui = "Show UI"
 @onready var show_ui_value = false
 var id :int
 
-
+@onready var interact_text = $InteractText
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	id = ASSIGN_ID
 	ASSIGN_ID += 1

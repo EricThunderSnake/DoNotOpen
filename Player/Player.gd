@@ -1,16 +1,23 @@
 extends CharacterBody3D
 
+class_name Player
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 signal pick_up_items
+signal start_dialog(actor_id:int)
+signal continue_dialog
+var is_in_dialog = false
 
+const NULL_ID = -1
+var actor_id = NULL_ID # -1 means there is no actor to speak to
 
 @onready var interact_area:Area3D = $Area3D
 var player_target : Target
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	player_target = Target.new()
 	player_target.name = "Player Target"
 	player_target.SetNextTarget(player_target)
@@ -18,13 +25,21 @@ func _ready():
 	
 	interact_area.body_entered.connect(on_body_enter)
 	interact_area.body_exited.connect(on_body_exit)
-	
-	if !OS.is_debug_build():
-		var interact_area_mesh = $Area3D/MeshInstance3D
-		interact_area_mesh.queue_free()
 
 func _physics_process(delta):
-	# Add the gravity.
+	if !get_tree().paused:
+		game_behavior(delta)
+	else:
+		dialog_behavior()
+	
+
+func dialog_behavior():
+	if Input.is_action_just_pressed("Interact"):
+		continue_dialog.emit()
+	
+
+func game_behavior(delta:float) -> void:
+	velocity = Vector3(0, velocity.y, 0)
 	
 	if Debug.quit_on_escape:
 		if Input.is_action_just_pressed("Escape"):
@@ -39,9 +54,10 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("Interact"):
 		pick_up_items.emit()
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+		start_dialog.emit(actor_id)
+		
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("MoveLeft", "MoveRight", "MoveForward", "MoveBackward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -52,13 +68,23 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
-	
+
 func on_body_enter(body:Node3D) -> void:
+	if body is not Player:
+		if body.interact_text != null:
+			body.interact_text.visible = true
+	if body is Actor:
+		actor_id = body.id
 	if body is Item:
 		body.show_ui_value = true
 		body.item_changed.emit(body.id, body.show_ui, body.show_ui_value)
 
 func on_body_exit(body:Node3D) -> void:
+	if body is not Player:
+		if body.interact_text != null:
+			body.interact_text.visible = false
+	if body is Actor:
+		actor_id = NULL_ID
 	if body is Item:
 		body.show_ui_value = false
 		body.item_changed.emit(body.id, body.show_ui, body.show_ui_value)

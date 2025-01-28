@@ -47,5 +47,4 @@ mesh = SubResource("PlaneMesh_fmrs1")
 transform = Transform3D(1, 0, 0, 0, 0.69203, 0.721869, 0, -0.721869, 0.69203, 0, 13.6816, 9.5174)
 
 [node name="Player" parent="Node3D" instance=ExtResource("1_digor")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.160183, 1, -0.0178375)

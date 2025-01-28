@@ -1,0 +1,42 @@
+{"0":
+	{"0":
+		{"Name":"Steve",
+		"NextDialogID":1,
+		"Speech":"Hello!"
+	},
+	"1":
+		{"Name":"Steve",
+		"NextDialogID":-1,
+		"Speech":"See ya!"}
+	},
+"1":
+	{"0":
+		{"Name":"Steve",
+		"NextDialogID":1,
+		"Speech":"Hello!"},
+	"1":
+		{"Name":"Steve",
+		"NextDialogID":-1,
+		"Speech":"See ya!"}
+	},
+"2":
+	{"0":
+		{"Name":"Steve",
+		"NextDialogID":1,
+		"Speech":"Hello!"},
+	"1":
+		{"Name":"Steve",
+		"NextDialogID":-1,
+		"Speech":"See ya!"}
+	},
+"3":
+	{"0":
+		{"Name":"Steve",
+		"NextDialogID":1,
+		"Speech":"Hello!"},
+	"1":
+		{"Name":"Steve",
+		"NextDialogID":-1,
+		"Speech":"See ya!"}
+	}
+}

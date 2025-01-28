@@ -1,5 +1,7 @@
 extends Node
 
+class_name ItemManager
+
 @onready var item_ui = $ItemUI
 @onready var pick_up_text = $"ItemUI/Pick Up Text"
 @onready var present_items = $PresentItems

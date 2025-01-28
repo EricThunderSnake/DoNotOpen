@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2ir6yr1hl5um"]
+[gd_scene load_steps=12 format=3 uid="uid://dfvwcqgy5k5k5"]
 
-[ext_resource type="PackedScene" uid="uid://pvqt43lxq2nm" path="res://Player/Player.tscn" id="1_m6k7p"]
-[ext_resource type="PackedScene" uid="uid://cq5dw6tsdy5s5" path="res://Item/Item.tscn" id="2_gxvqr"]
-[ext_resource type="Script" path="res://Item/ItemManager.gd" id="2_n6kqd"]
+[ext_resource type="PackedScene" uid="uid://pvqt43lxq2nm" path="res://Player/Player.tscn" id="1_oloec"]
+[ext_resource type="PackedScene" uid="uid://cy1gj6npk7tb7" path="res://Actor/Actor.tscn" id="3_2mv88"]
+[ext_resource type="PackedScene" uid="uid://d15672pv2gjus" path="res://Target/Target.tscn" id="4_81514"]
+[ext_resource type="Script" path="res://Actor/ActorManager.gd" id="4_uq0tm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ida35"]
 energy_multiplier = 0.8
@@ -27,7 +28,10 @@ sky = SubResource("Sky_jken0")
 environment = SubResource("Environment_pmaes")
 camera_attributes = SubResource("CameraAttributesPractical_inbyj")
 
-[node name="Player" parent="." instance=ExtResource("1_m6k7p")]
+[node name="Target" parent="." instance=ExtResource("4_81514")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09479, -9.53674e-07, -15.7375)
+
+[node name="Player" parent="." instance=ExtResource("1_oloec")]
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.69203, 0.721869, 0, -0.721869, 0.69203, 0, 12.6816, 9.5174)
@@ -49,26 +53,39 @@ transform = Transform3D(512, 0, 0, 0, 512, 0, 0, 0, 512, 0, 0, 0)
 mesh = SubResource("PlaneMesh_fmrs1")
 skeleton = NodePath("../CollisionShape3D")
 
-[node name="ItemManager" type="Node" parent="."]
-script = ExtResource("2_n6kqd")
+[node name="ActorManager" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("4_uq0tm")
 
-[node name="ItemUI" type="CanvasLayer" parent="ItemManager"]
-
-[node name="Pick Up Text" type="RichTextLabel" parent="ItemManager/ItemUI"]
+[node name="ActorUI" type="CanvasLayer" parent="ActorManager"]
 visible = false
-offset_left = 234.0
-offset_top = 473.0
-offset_right = 477.0
-offset_bottom = 498.0
-text = "Press E to pick up items"
 
-[node name="PresentItems" type="Node" parent="ItemManager"]
+[node name="ActorName" type="RichTextLabel" parent="ActorManager/ActorUI"]
+offset_left = 173.0
+offset_top = 276.0
+offset_right = 416.0
+offset_bottom = 301.0
+text = "11"
 
-[node name="Item" parent="ItemManager/PresentItems" instance=ExtResource("2_gxvqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.843843, 1.03957, 7.16795)
+[node name="DialogBox" type="RichTextLabel" parent="ActorManager/ActorUI"]
+offset_left = 177.0
+offset_top = 321.0
+offset_right = 420.0
+offset_bottom = 346.0
+text = "Pla2"
 
-[node name="Item2" parent="ItemManager/PresentItems" instance=ExtResource("2_gxvqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25496, 1, 6.80012)
+[node name="PlayerResponse" type="RichTextLabel" parent="ActorManager/ActorUI"]
+offset_left = 178.0
+offset_top = 368.0
+offset_right = 421.0
+offset_bottom = 393.0
+text = "Whatgv"
 
-[node name="Item3" parent="ItemManager/PresentItems" instance=ExtResource("2_gxvqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05719, 1, -8.61207)
+[node name="PresentActors" type="Node" parent="ActorManager"]
+process_mode = 1
+
+[node name="Actor" parent="ActorManager/PresentActors" node_paths=PackedStringArray("target") instance=ExtResource("3_2mv88")]
+process_physics_priority = 90
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922431, 1, -2.88784)
+target = NodePath("../../../Target")
+follow_player = true
