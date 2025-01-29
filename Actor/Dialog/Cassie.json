@@ -1,0 +1,71 @@
+{"0":
+	{"0":
+		{"Name":"Cassie",
+		"Responses":{
+			"0":{
+				"Text": "<< Continue >>",
+				"NextDialogID": 1
+			},
+		},
+		"Description":"She confidently stands, looking into your eyes.",
+		"Speech":"Hey, partner, grab yourself a drink and take it easy."},
+	"1":
+		{"Name":"Cassie",
+		"Responses":{
+			"0":{
+				"Text": "<< Continue >>",
+				"NextDialogID": 2
+			},
+		},
+		"Speech":"Heard some poor soul lost all their dough."},
+	"2":
+		{"Name":"Cassie",
+		"Responses":{
+			"0":{
+				"Text": "<< End Conversation >>",
+				"NextDialogID": -1
+			},
+		},
+		"Speech":"If your're feelin' geneous, lift their spirits back up."}
+	},
+"1":
+	{"0":
+		{"Responses":{
+			"0":{
+				"Text": "<< Hand Over [Item1] >>",
+				"NextDialogID": 2
+			},
+			"1":{
+				"Text": "<< Hand Over [Item2] >>",
+				"NextDialogID": 1
+			},
+			"2":{
+				"Text": "<< Hand Over [Item3] >>",
+				"NextDialogID": 2
+			},
+			"3":{
+				"Text": "<< Leave >>",
+				"NextDialogID": -1
+			},
+		},
+		"Description":"Cassie think's she's untouchable. Make her think otherwise...."},
+	"1":
+		{"Name":"Cassie",
+		"Responses":{
+			"0":{
+				"Text": "<< End Conversation >>",
+				"NextDialogID": -1
+			},
+		},
+		"Speech":"He.... WHAT!? I've gotta get outta here!"},
+	"2":
+		{"Name":"Cassie",
+		"Responses":{
+			"0":{
+				"Text": "<< End Conversation >>",
+				"NextDialogID": -1
+			},
+		},
+		"Speech":"Heh. More for me."}
+	},
+}

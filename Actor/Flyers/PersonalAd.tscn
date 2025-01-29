@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://pfmiywtv8vlh"]
+
+[ext_resource type="Script" path="res://Actor/actor.gd" id="1_ltq5y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qr0en"]
+albedo_color = Color(0.968627, 0.933333, 0.470588, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nbc4t"]
+material = SubResource("StandardMaterial3D_qr0en")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ge677"]
+
+[sub_resource type="SystemFont" id="SystemFont_d67f5"]
+font_names = PackedStringArray("Fantasy")
+subpixel_positioning = 0
+
+[sub_resource type="TextMesh" id="TextMesh_maoam"]
+text = "Press E to Read"
+font = SubResource("SystemFont_d67f5")
+font_size = 127
+
+[node name="Actor" type="CharacterBody3D"]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_ltq5y")
+dialog_json = "res://Actor/Dialog/PersonalAd.json"
+
+[node name="ActorMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999999, -0.000329911, 0.00169722, 0.00119136, 0.842874, -0.538109, -0.00125302, 0.53811, 0.842873, 0, 0, 0)
+mesh = SubResource("PlaneMesh_nbc4t")
+
+[node name="ActorShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_ge677")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="InteractText" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92336, 0)
+visible = false
+mesh = SubResource("TextMesh_maoam")

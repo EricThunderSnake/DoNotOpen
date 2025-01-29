@@ -1,0 +1,12 @@
+{"0":
+	{"0":
+		{"Name":"Cult Zine",
+		"Responses":{
+			"0":{
+				"Text": "<< Stop Reading >>",
+				"NextDialogID": -1
+			},
+		},
+		"Speech":"Dough keeps the world turning!"},
+	}
+}

@@ -1,0 +1,12 @@
+{"0":
+	{"0":
+		{"Name":"Personal Ad",
+		"Responses":{
+			"0":{
+				"Text": "<< Stop Reading >>",
+				"NextDialogID": -1
+			},
+		},
+		"Speech":"Lookin' for enough coin to ride on outta this town for good."},
+	}
+}

@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 class_name Actor
 
+@onready var player = %Player
+
 static var ASSIGN_ID := 0
 var id :int
 
@@ -30,8 +32,7 @@ func _ready():
 	ASSIGN_ID += 1
 	
 	# These values need to be adjusted for the actor's speed and the navigation layout.
-	player_target = $"../../../Player".player_target # look into signals for switching target to and from player
-	print(Target.GetName(player_target))
+	player_target = player.player_target # look into signals for switching target to and from player
 	movement_target_position = Target.GetPosition(target)
 	nav_agent.path_desired_distance = 0.5
 	nav_agent.target_desired_distance = 0.5
@@ -51,7 +52,7 @@ func actor_setup():
 func set_movement_target(movement_target: Vector3):
 	nav_agent.set_target_position(movement_target)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if nav_agent_active:
 		if (follow_player and target != player_target) or (!follow_player and target == player_target):
 			if target == player_target:
@@ -79,7 +80,7 @@ func _physics_process(delta):
 		velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 		move_and_slide()
 
-func test_write_json() -> Dictionary:
+func test_write_json() -> void:
 	for i in range(0,4):
 		var test_dialog = {"Name":"Steve", "NextDialogID":1,"Speech":"Hello!"}
 		var test2 = {"Name":"Steve",  "NextDialogID":-1, "Speech":"See ya!"}
@@ -87,8 +88,6 @@ func test_write_json() -> Dictionary:
 		scene[str(0)] = test_dialog
 		scene[str(1)] = test2
 		dialog_scenes[str(i)] = scene 
-	
-	return dialog_scenes
 	var data_to_send = dialog_scenes
 	var json_string = JSON.stringify(data_to_send)
 	print(dialog_scenes)
@@ -108,8 +107,8 @@ func read_dialog_file() -> Dictionary:
 		if typeof(data_received) == TYPE_DICTIONARY:
 			return data_received
 		else:
-			return {}
 			print("Unexpected data for Actor ID: d%" % id)
+			return {}
 	else:
-		return {}
 		print("JSON Parse Error: ", json.get_error_message(), " in ", content, " at line ", json.get_error_line())
+		return {}

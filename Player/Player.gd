@@ -5,6 +5,8 @@ class_name Player
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+var inventory:Dictionary = {Item.TYPE.CASH:false, Item.TYPE.KOMPROMAT:false, Item.TYPE.TICKET:false}
+
 signal pick_up_items
 signal start_dialog(actor_id:int)
 signal continue_dialog
@@ -29,8 +31,6 @@ func _ready():
 func _physics_process(delta):
 	if !get_tree().paused:
 		game_behavior(delta)
-	else:
-		dialog_behavior()
 	
 
 func dialog_behavior():
@@ -74,10 +74,12 @@ func on_body_enter(body:Node3D) -> void:
 		if body.interact_text != null:
 			body.interact_text.visible = true
 	if body is Actor:
-		actor_id = body.id
+		var actor :Actor = body
+		actor_id = actor.id
 	if body is Item:
-		body.show_ui_value = true
-		body.item_changed.emit(body.id, body.show_ui, body.show_ui_value)
+		var item : Item = body
+		item.show_ui_value = true
+		item.item_changed.emit(item.id, item.show_ui, item.show_ui_value)
 
 func on_body_exit(body:Node3D) -> void:
 	if body is not Player:
@@ -86,5 +88,6 @@ func on_body_exit(body:Node3D) -> void:
 	if body is Actor:
 		actor_id = NULL_ID
 	if body is Item:
-		body.show_ui_value = false
-		body.item_changed.emit(body.id, body.show_ui, body.show_ui_value)
+		var item : Item = body
+		item.show_ui_value = false
+		item.item_changed.emit(item.id, item.show_ui, item.show_ui_value)

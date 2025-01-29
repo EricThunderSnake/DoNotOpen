@@ -1,0 +1,71 @@
+{"0":
+	{"0":
+		{"Name":"Abigale",
+		"Responses":{
+			"0":{
+				"Text": "<< Continue >>",
+				"NextDialogID": 1
+			},
+		},
+		"Description":"She gazes to her right at the long road behind her.",
+		"Speech":"Unless you can rustle up a ride outta here, best leave me be."},
+	"1":
+		{"Name":"Abigale",
+		"Responses":{
+			"0":{
+				"Text": "<< Continue >>",
+				"NextDialogID": 2
+			},
+		},
+		"Speech":"I'm tired of the big talker in the saloon."},
+	"2":
+		{"Name":"Abigale",
+		"Responses":{
+			"0":{
+				"Text": "<< End Conversation >>",
+				"NextDialogID": -1
+			},
+		},
+		"Speech":"Maybe you could give 'em a scare that'd send 'em runnin' till the cows come home."}
+	},
+"1":
+	{"0":
+		{"Responses":{
+			"0":{
+				"Text": "<< Hand Over [Item1] >>",
+				"NextDialogID": 1
+			},
+			"1":{
+				"Text": "<< Hand Over [Item2] >>",
+				"NextDialogID": 2
+			},
+			"2":{
+				"Text": "<< Hand Over [Item3] >>",
+				"NextDialogID": 2
+			},
+			"3":{
+				"Text": "<< Leave >>",
+				"NextDialogID": -1
+			},
+		},
+		"Description":"How will you convince Abigale to skip town?"},
+	"1":
+		{"Name":"Abigale",
+		"Responses":{
+			"0":{
+				"Text": "<< End Conversation >>",
+				"NextDialogID": -1
+			},
+		},
+		"Speech":"If I ever strike it rich, I'll send some gold your way"},
+	"2":
+		{"Name":"Abigale",
+		"Responses":{
+			"0":{
+				"Text": "<< End Conversation >>",
+				"NextDialogID": -1
+			},
+		},
+		"Description":"A displeased sigh escapes her mouth."}
+	},
+}
