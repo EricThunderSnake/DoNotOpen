@@ -1,10 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://883bfr0ypc2x"]
+[gd_scene load_steps=28 format=3 uid="uid://883bfr0ypc2x"]
 
-[ext_resource type="Script" path="res://Scenes/Player.gd" id="2_j4d7l"]
+[ext_resource type="Script" path="res://Scenes/player2.5d.gd" id="1_jpymj"]
+[ext_resource type="AudioStream" uid="uid://ddwyhw32xqwtm" path="res://Art/Sound/boom.ogg" id="3_24ahk"]
 [ext_resource type="Texture2D" uid="uid://b4vwls0sth3h4" path="res://Art/Animations/Bull_Et/PlayerSpritesheet.png" id="3_elkaa"]
 [ext_resource type="PackedScene" uid="uid://b8518mhbsh0gl" path="res://Scenes/Gus.tscn" id="5_pkdbb"]
 [ext_resource type="PackedScene" uid="uid://bid208c6g2rfm" path="res://Scenes/Cassie.tscn" id="6_lxgyf"]
 [ext_resource type="PackedScene" uid="uid://cqx4b1h183ltw" path="res://Scenes/Abigale.tscn" id="7_duuhn"]
+[ext_resource type="PackedScene" uid="uid://lsuj6pxyw7h0" path="res://Scenes/Obstacle.tscn" id="8_iat1h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyvil"]
 atlas = ExtResource("3_elkaa")
@@ -180,16 +182,20 @@ height = 11.0354
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.61337, 0)
-script = ExtResource("2_j4d7l")
+script = ExtResource("1_jpymj")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.29439, 0)
 sprite_frames = SubResource("SpriteFrames_h06dh")
-animation = &"run_down"
+animation = &"jump"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.35248, 0)
 shape = SubResource("CapsuleShape3D_1pyor")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("3_24ahk")
+volume_db = -1.5
 
 [node name="Ground" type="CSGBox3D" parent="."]
 transform = Transform3D(22, 0, 0, 0, 2, 0, 0, 0, 22, 0, 0, 0)
@@ -211,3 +217,6 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.422521, 2.86521, 
 [node name="abigale_char" parent="." instance=ExtResource("7_duuhn")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 5.22895, 2.96567, -6.79497)
 disable_mode = 1
+
+[node name="Obstacle" parent="." instance=ExtResource("8_iat1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.72861, 2.30299, 0)

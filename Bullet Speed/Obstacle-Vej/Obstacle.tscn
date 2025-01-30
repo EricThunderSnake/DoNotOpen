@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://lsuj6pxyw7h0"]
+
+[ext_resource type="Script" path="res://obstacle.gd" id="1_ln1pn"]
+[ext_resource type="PackedScene" uid="uid://d2g3j7xyboo7i" path="res://Art/VFX/explosion.tscn" id="2_02wlv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6syf7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3q3e"]
+albedo_color = Color(0.543294, 0.370897, 0.223753, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m0l5l"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2f4k8"]
+
+[node name="Obstacle" type="RigidBody3D"]
+script = ExtResource("1_ln1pn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_6syf7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_f3q3e")
+mesh = SubResource("BoxMesh_m0l5l")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_2f4k8")
+
+[node name="Explosion" parent="." instance=ExtResource("2_02wlv")]

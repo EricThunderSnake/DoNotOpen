@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+class_name Player
 signal dash_started
 
 @onready var animated_sprite_3D = $AnimatedSprite3D
@@ -7,9 +7,12 @@ signal dash_started
 @export var jump_impulse : float = 12.0  # jump impulsion
 @export var gravity : float = 20.0  # Gravité
 
+#@onready var sound_barrier = $"Sonic Boom/Schockwave"
+
 #Dash
-@export var dash_speed : float = 100.0  # Vitesse du dash
-@export var dash_duration : float = 1.5  # Durée du dash
+@onready var dash_sound = $AudioStreamPlayer
+@export var dash_speed : float = 30.0  # Vitesse du dash
+@export var dash_duration : float = 0.1  # Durée du dash
 @export var dash_cooldown : float = 1.0  # Temps de recharge entre chaque dash
 
 enum State { idle, run_h, run_v, jump, dash } # run_v: vertical, run_h: horizontal
@@ -60,17 +63,21 @@ func _physics_process(delta: float):
 	# Jump
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y += jump_impulse
-		current_state = State.jump
+		#current_state = State.jump
+		animated_sprite_3D.play("jump")
 		print("Jump")
 		
 	# Dash
 	if Input.is_action_just_pressed("dash") and dash_cooldown_left <= 0 and current_state != State.dash:
+		dash_sound.play()
+		#sound_barrier.emit_particle()
 		start_dash(direction)
 	
 	if dash_cooldown_left > 0:
 		dash_cooldown_left -= delta
-
-	update_animation()
+		
+	if current_state != State.dash:
+		update_animation()
 
 	#Movement
 	move_and_slide()
@@ -89,7 +96,7 @@ func update_animation():
 	if !is_on_floor() and current_state == State.jump:
 		animated_sprite_3D.pause()
 	
-	elif velocity.z != 0 and is_on_floor():
+	if velocity.z != 0 and is_on_floor():
 		if velocity.z > 0:
 			current_state = State.run_v
 			animated_sprite_3D.play("run_down")
