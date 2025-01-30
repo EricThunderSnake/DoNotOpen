@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bldcalmeccwtw"]
+[gd_scene load_steps=26 format=3 uid="uid://bldcalmeccwtw"]
 
 [ext_resource type="Script" path="res://Game/game.gd" id="1_pw1fj"]
 [ext_resource type="PackedScene" uid="uid://hpm3y42bfkrr" path="res://Dialogue/start_dialogue.tscn" id="2_btkca"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://ce7ni346x67pu" path="res://Assets/Scenes/customer1.tscn" id="9_6ujpw"]
 [ext_resource type="PackedScene" uid="uid://b52b6ccffjat6" path="res://Assets/Scenes/customer2.tscn" id="10_55uy6"]
 [ext_resource type="PackedScene" uid="uid://dielgn1is7p57" path="res://Assets/Scenes/customer3.tscn" id="11_clbxc"]
-[ext_resource type="Texture2D" uid="uid://beoxx7727lb1w" path="res://icon.svg" id="18_7pc4w"]
 
 [sub_resource type="Environment" id="Environment_p5yeq"]
 
@@ -36,28 +35,6 @@ uv1_scale = Vector3(25, 25, 25)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1jseo"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3ck14"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_20rlq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("18_7pc4w")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3mimn"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("18_7pc4w")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_p5yeq")
@@ -120,7 +97,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -42)
 
 [node name="Cassie" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -20)
-sprite_frames = SubResource("SpriteFrames_20rlq")
 
 [node name="Cash" parent="." instance=ExtResource("7_7nwmr")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.872, 0.01, -20.6131)
@@ -251,7 +227,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7021, 0, -41.2709)
 
 [node name="Gus" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -43)
-sprite_frames = SubResource("SpriteFrames_3mimn")
 
 [node name="Poker Tables" type="Node3D" parent="."]
 
