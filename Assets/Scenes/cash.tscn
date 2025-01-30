@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7xno4ob77uqg"]
+
+[ext_resource type="Texture2D" uid="uid://tiu38nkvs4g1" path="res://Assets/Images/cash.png" id="1_wwsxb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbjou"]
+size = Vector3(3.70081, 2.6708, 1)
+
+[node name="Cash" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.156788, 2.73831, 0)
+shape = SubResource("BoxShape3D_dbjou")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+texture = ExtResource("1_wwsxb")
