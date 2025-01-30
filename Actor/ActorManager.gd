@@ -13,6 +13,10 @@ const responses = "Responses"
 const text = "Text"
 const next_dialog_id = "NextDialogID"
 
+const cash = "Cash"
+const kompromat = "Kompromat"
+const ticket = "Ticket"
+
 signal scene_finished(actor:Actor)
 
 @onready var actor_name : RichTextLabel = $ActorUI/VBoxContainer/ActorName
@@ -49,8 +53,8 @@ func _ready():
 
 func _on_start_dialog(id:int):
 	if id != NULL_ID && !player.is_in_dialog:
-		player.is_in_dialog = true
 		speaking_actor = actor_dict[id]
+		player.is_in_dialog = true
 		var scene_id = str(speaking_actor.scene_id)
 		var dialog_id = str(speaking_actor.dialog_id)
 		var conversation = speaking_actor.dialog_scenes[scene_id][dialog_id]
@@ -66,6 +70,9 @@ func _on_continue_dialog(choice:String):
 	var scene_id = str(speaking_actor.scene_id)
 	var dialog_id = str(speaking_actor.dialog_id)
 	var conversation = speaking_actor.dialog_scenes[scene_id][dialog_id]
+	if "Score" in conversation[responses][choice].keys():
+		player.score += conversation[responses][choice]["Score"]
+	print("Player Score: %d" % player.score)
 	speaking_actor.dialog_id = conversation[responses][choice][next_dialog_id]
 	if speaking_actor.dialog_id != NULL_ID:
 		scene_id = str(speaking_actor.scene_id)
@@ -81,6 +88,7 @@ func _on_continue_dialog(choice:String):
 		actor_name.text = ""
 		speech_box.text = ""
 		hide_buttons()
+		print(player.inventory)
 		scene_finished.emit(speaking_actor)
 		get_tree().paused = false
 		player.is_in_dialog = false
@@ -117,11 +125,16 @@ func display_speech(conversation:Dictionary) -> void:
 
 func display_buttons(conversation:Dictionary) -> void:
 	var num_of_responses = conversation[responses].size()
+	print(num_of_responses)
 	if num_of_responses == 1:
 		var button : Button = response_buttons[0]
 		button.custom_minimum_size = Vector2(0,24)
 		button.text = conversation[responses][button.name][text]
 		button.visible = true
+		for i in range(1,response_buttons.size()):
+			response_buttons[i].custom_minimum_size = Vector2(0,0)
+			response_buttons[i].text = ""
+			response_buttons[i].visible = false
 	else:
 		for i in range(0, response_buttons.size()):
 			var button : Button = response_buttons[i]
@@ -182,13 +195,35 @@ func pick_up_multiple_at_time() -> void:
 			actor_dict.erase(id)
 
 func on_press_button_0():
+	handle_inventory_and_score(0)
 	_on_continue_dialog(str(0))
 
 func on_press_button_1():
+	handle_inventory_and_score(1)
 	_on_continue_dialog(str(1))
 
 func on_press_button_2():
+	handle_inventory_and_score(2)
 	_on_continue_dialog(str(2))
 
 func on_press_button_3():
+	handle_inventory_and_score(3)
 	_on_continue_dialog(str(3))
+
+func handle_inventory_and_score(id:int):
+	var button:Button = response_buttons[id]
+	if cash in button.text:
+		speaking_actor.has_item = true
+		player.inventory[Item.TYPE.CASH] = false
+		if speaker_name == "Gus":
+			speaking_actor.has_correct_item = true
+	elif kompromat in button.text:
+		speaking_actor.has_item = true
+		player.inventory[Item.TYPE.KOMPROMAT] = false
+		if speaker_name == "Cassie":
+			speaking_actor.has_correct_item = true
+	elif ticket in button.text:
+		speaking_actor.has_item = true
+		player.inventory[Item.TYPE.TICKET] = false
+		if speaker_name == "Abigale":
+			speaking_actor.has_correct_item = true

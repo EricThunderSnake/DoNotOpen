@@ -33,15 +33,18 @@
 		{"Responses":{
 			"0":{
 				"Text": "<< Hand Over Cash >>",
-				"NextDialogID": 1
+				"NextDialogID": 1,
+				"Score":10
 			},
 			"1":{
-				"Text": "<< Hand Over Ticket >>",
-				"NextDialogID": 2
+				"Text": "<< Hand Over Kompromat >>",
+				"NextDialogID": 2,
+				"Score":0
 			},
 			"2":{
-				"Text": "<< Hand Over Kompromat >>",
-				"NextDialogID": 3
+				"Text": "<< Hand Over Ticket >>",
+				"NextDialogID": 2,
+				"Score":0
 			},
 			"3":{
 				"Text": "<< Leave >>",
@@ -67,14 +70,5 @@
 			},
 		},
 		"Speech":"This won't pay for next month's rent!"},
-	"3":
-		{"Name":"Gus",
-		"Responses":{
-			"0":{
-				"Text": "<< End Conversation >>",
-				"NextDialogID": -1
-			},
-		},
-		"Speech":"Cassie won't be stickin' 'round much longer!"}
 	},
 }

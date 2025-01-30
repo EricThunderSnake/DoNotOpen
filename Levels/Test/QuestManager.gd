@@ -8,6 +8,7 @@ extends Node
 
 @export var objective_dictionary:Dictionary
 
+@onready var player = %Player
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,3 +24,6 @@ func _update_scenario(actor:Actor) -> void:
 		pass
 	elif actor.scene_id == 0 :
 		actor.scene_id += 1
+	else:
+		actor.interact_text.visible = false
+		player.actor_id = player.NULL_ID

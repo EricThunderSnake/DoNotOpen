@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cq5dw6tsdy5s5"]
+[gd_scene load_steps=8 format=3 uid="uid://do3vmssdsbyst"]
 
-[ext_resource type="Script" path="res://Item/item.gd" id="1_asvh2"]
+[ext_resource type="Script" path="res://Item/item.gd" id="1_opmex"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ge677"]
 
@@ -12,18 +12,19 @@ material = SubResource("StandardMaterial3D_04axy")
 
 [sub_resource type="SystemFont" id="SystemFont_p0wba"]
 font_names = PackedStringArray("Fantasy")
+subpixel_positioning = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tiabd"]
 
 [sub_resource type="TextMesh" id="TextMesh_3is46"]
 material = SubResource("StandardMaterial3D_tiabd")
-text = "Press E to Pick Up"
+text = "Cash"
 font = SubResource("SystemFont_p0wba")
 font_size = 127
 
 [node name="Item" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("1_asvh2")
+script = ExtResource("1_opmex")
 
 [node name="ItemShape" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_ge677")

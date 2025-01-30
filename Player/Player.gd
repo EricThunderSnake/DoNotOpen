@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 class_name Player
 
+var score = 0
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
@@ -70,13 +72,14 @@ func game_behavior(delta:float) -> void:
 	move_and_slide()
 
 func on_body_enter(body:Node3D) -> void:
-	if body is not Player:
-		if body.interact_text != null:
-			body.interact_text.visible = true
 	if body is Actor:
 		var actor :Actor = body
-		actor_id = actor.id
+		if actor.interact_text != null && !actor.has_item:
+			actor.interact_text.visible = true
+			actor_id = actor.id
 	if body is Item:
+		if body.interact_text != null:
+			body.interact_text.visible = true
 		var item : Item = body
 		item.show_ui_value = true
 		item.item_changed.emit(item.id, item.show_ui, item.show_ui_value)

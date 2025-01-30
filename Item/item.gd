@@ -29,7 +29,8 @@ enum TYPE {
 @onready var used_value : bool
 var id :int
 
-@onready var interact_text = $InteractText
+@onready var interact_text:MeshInstance3D = $InteractText
+@onready var mesh_text : TextMesh = interact_text.mesh
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_PAUSABLE

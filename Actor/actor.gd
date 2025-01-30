@@ -14,6 +14,9 @@ var last_target: Target = null
 var is_target_reached := false
 var player_target :Target
 
+var has_item = false
+var has_correct_item = false
+
 @export var dialog_json : String = "res://DialogWriteTest.json"
 var dialog_scenes: Dictionary
 var scene_id: int = 0

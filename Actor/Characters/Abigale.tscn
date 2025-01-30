@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Actor/actor.gd" id="1_rqop7"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04axy"]
-albedo_color = Color(0.528898, 0, 0.234589, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87r5f"]
+albedo_color = Color(0.682676, 0.472577, 0.205746, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_r2r5j"]
-material = SubResource("StandardMaterial3D_04axy")
+material = SubResource("StandardMaterial3D_87r5f")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ge677"]
 
@@ -19,7 +19,7 @@ text = "Press E to Talk"
 font = SubResource("SystemFont_d67f5")
 font_size = 127
 
-[node name="Actor" type="CharacterBody3D"]
+[node name="Abigale" type="CharacterBody3D"]
 process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_rqop7")
