@@ -1,0 +1,48 @@
+{"0":
+	{"0":
+		{"Name":"Persuasion NPC",
+		"NextDialogID":1,
+		"Description Box":"HE/she gaves to his/her right at the long road behind him/her.",
+		"Speech":"Unless you can rustle up a ride outta here, best leave me be."
+	},
+	"1":
+		{"Name":"Persuasion NPC",
+		"NextDialogID":2,
+		"Speech":"I'm tired of the big talker in the saloon."
+	},
+	"2":
+		{"Name":"Persuasion NPC",
+		"NextDialogID":-1,
+		"Speech":"Maybe you could give em a scare thatd send em running till the cows come home."}
+	},
+"1":
+	{"0":
+		{"Name":"Steve",
+		"NextDialogID":1,
+		"Speech":"Hello!"},
+	"1":
+		{"Name":"Steve",
+		"NextDialogID":-1,
+		"Speech":"See ya!"}
+	},
+"2":
+	{"0":
+		{"Name":"Steve",
+		"NextDialogID":1,
+		"Speech":"Hello!"},
+	"1":
+		{"Name":"Steve",
+		"NextDialogID":-1,
+		"Speech":"See ya!"}
+	},
+"3":
+	{"0":
+		{"Name":"Steve",
+		"NextDialogID":1,
+		"Speech":"Hello!"},
+	"1":
+		{"Name":"Steve",
+		"NextDialogID":-1,
+		"Speech":"See ya!"}
+	}
+}
