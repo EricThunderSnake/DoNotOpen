@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2ir6yr1hl5um"]
+
+[ext_resource type="PackedScene" uid="uid://pvqt43lxq2nm" path="res://Player/Player.tscn" id="1_m6k7p"]
+[ext_resource type="PackedScene" uid="uid://cq5dw6tsdy5s5" path="res://Item/Item.tscn" id="2_gxvqr"]
+[ext_resource type="Script" path="res://Item/ItemManager.gd" id="2_n6kqd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ida35"]
+energy_multiplier = 0.8
+
+[sub_resource type="Sky" id="Sky_jken0"]
+sky_material = SubResource("ProceduralSkyMaterial_ida35")
+
+[sub_resource type="Environment" id="Environment_pmaes"]
+background_mode = 2
+background_color = Color(0.0115899, 0.00853991, 0.0274126, 1)
+sky = SubResource("Sky_jken0")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_inbyj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k13xs"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r1mq3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fmrs1"]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_pmaes")
+camera_attributes = SubResource("CameraAttributesPractical_inbyj")
+
+[node name="Player" parent="." instance=ExtResource("1_m6k7p")]
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.69203, 0.721869, 0, -0.721869, 0.69203, 0, 12.6816, 9.5174)
+
+[node name="SkyLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999885, 0.0151663, 0, -0.0151663, 0.999885, 0, 0, 0)
+light_color = Color(0.741605, 0.475084, 0.0247729, 1)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 16.0
+
+[node name="Ground" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_k13xs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape3D_r1mq3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(512, 0, 0, 0, 512, 0, 0, 0, 512, 0, 0, 0)
+mesh = SubResource("PlaneMesh_fmrs1")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="ItemManager" type="Node" parent="."]
+script = ExtResource("2_n6kqd")
+
+[node name="ItemUI" type="CanvasLayer" parent="ItemManager"]
+
+[node name="Pick Up Text" type="RichTextLabel" parent="ItemManager/ItemUI"]
+visible = false
+offset_left = 234.0
+offset_top = 473.0
+offset_right = 477.0
+offset_bottom = 498.0
+text = "Press E to pick up items"
+
+[node name="PresentItems" type="Node" parent="ItemManager"]
+
+[node name="Item" parent="ItemManager/PresentItems" instance=ExtResource("2_gxvqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.843843, 1.03957, 7.16795)
+
+[node name="Item2" parent="ItemManager/PresentItems" instance=ExtResource("2_gxvqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25496, 1, 6.80012)
+
+[node name="Item3" parent="ItemManager/PresentItems" instance=ExtResource("2_gxvqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05719, 1, -8.61207)
