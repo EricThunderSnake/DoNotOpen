@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://6cgl2catq8kb"]
+
+[ext_resource type="Script" path="res://box.gd" id="1_3jo6s"]
+[ext_resource type="PackedScene" uid="uid://d2g3j7xyboo7i" path="res://Art/VFX/explosion.tscn" id="2_bsd6l"]
+[ext_resource type="PackedScene" uid="uid://lsuj6pxyw7h0" path="res://Scenes/Obstacle.tscn" id="3_n5hoq"]
+[ext_resource type="AudioStream" uid="uid://qn4i587i7bu1" path="res://Art/Sound/Wood Breaking Sound Effect.mp3" id="4_p3hp4"]
+
+[node name="Box" type="Node3D"]
+script = ExtResource("1_3jo6s")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="Explosion" parent="Marker3D" instance=ExtResource("2_bsd6l")]
+
+[node name="Obstacle" parent="." instance=ExtResource("3_n5hoq")]
+
+[node name="WoodBreakingSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_p3hp4")
+volume_db = -4.0
+
+[connection signal="child_exiting_tree" from="Obstacle" to="." method="_on_obstacle_child_exiting_tree"]

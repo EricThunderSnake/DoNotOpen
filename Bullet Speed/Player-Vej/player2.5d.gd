@@ -32,6 +32,7 @@ func _physics_process(delta: float):
 		velocity.y -= gravity * delta
 	else:
 		velocity.y = 0   #Speed reinitialisation on ground (not necessary)
+		
 
 	# Horizontal movement
 	var direction = Vector3.ZERO
@@ -63,7 +64,7 @@ func _physics_process(delta: float):
 	# Jump
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y += jump_impulse
-		#current_state = State.jump
+		current_state = State.jump
 		animated_sprite_3D.play("jump")
 		print("Jump")
 		
