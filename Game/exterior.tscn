@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cl78g08vkv8ad"]
+[gd_scene load_steps=24 format=3 uid="uid://cl78g08vkv8ad"]
 
 [ext_resource type="Script" path="res://Game/game.gd" id="1_ampmt"]
 [ext_resource type="PackedScene" uid="uid://bjhg2gjkblghe" path="res://Menus/pause_menu.tscn" id="2_e017q"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://gf0oebjb3oxa" path="res://Assets/Scenes/tumbleweed.tscn" id="9_gvklo"]
 [ext_resource type="PackedScene" uid="uid://b1eioqyh7n7rx" path="res://Assets/Scenes/fence.tscn" id="13_7cxgn"]
 [ext_resource type="PackedScene" uid="uid://c4t6fqc6wraie" path="res://Assets/Scenes/car.tscn" id="14_63fwl"]
+[ext_resource type="Texture2D" uid="uid://beoxx7727lb1w" path="res://icon.svg" id="16_pfgth"]
 
 [sub_resource type="Environment" id="Environment_p5yeq"]
 
@@ -29,6 +30,17 @@ albedo_texture = ExtResource("3_56q5l")
 uv1_scale = Vector3(25, 25, 25)
 
 [sub_resource type="QuadMesh" id="QuadMesh_p1lrt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l6iun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_pfgth")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_p5yeq")
@@ -294,3 +306,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9.398
 
 [node name="Tumbleweed3" parent="Tumbleweeds" instance=ExtResource("9_gvklo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.78873, 0, 13.3445)
+
+[node name="Abigale" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6773, 1, 6.03207)
+sprite_frames = SubResource("SpriteFrames_l6iun")
