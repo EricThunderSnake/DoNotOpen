@@ -57,6 +57,7 @@ mesh = SubResource("QuadMesh_p1lrt")
 
 [node name="Abigale" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6773, 1, 6.03207)
+visible = false
 
 [node name="Broken Roads" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.75, 0.1, 8)
