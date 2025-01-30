@@ -12,6 +12,7 @@ var current_line = 0
 
 @onready var start_text = $StartText
 @onready var next_button = $NextButton
+var dialogue_finished = false
 
 func _ready():
 	#Freeze game except UI
@@ -23,6 +24,7 @@ func update_dialogue():
 	if current_line < dialogue.size():
 		start_text.text = dialogue[current_line]
 	else:
+		dialogue_finished = true
 		#Unfreezes game
 		Engine.time_scale = 1
 		#Hides entire start dialogue

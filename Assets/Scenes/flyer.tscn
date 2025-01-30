@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlovbuf80qxgo"]
+
+[ext_resource type="Texture2D" uid="uid://b8fv6buk353fj" path="res://Assets/Images/flyer.png" id="1_0vos6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_acfpr"]
+size = Vector3(1.98999, 2.3017, 0.302002)
+
+[node name="Flyer" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_acfpr")
+
+[node name="Broken Road" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.1, 0)
+texture = ExtResource("1_0vos6")

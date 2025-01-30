@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpiqs4canit8s"]
-
-[ext_resource type="Script" path="res://game.gd" id="1_xijjt"]
-[ext_resource type="PackedScene" uid="uid://hpm3y42bfkrr" path="res://start_dialogue.tscn" id="2_a2p7g"]
-
-[node name="Game" type="Node3D"]
-script = ExtResource("1_xijjt")
-
-[node name="Start Dialogue" parent="." instance=ExtResource("2_a2p7g")]

@@ -1,11 +1,9 @@
-extends Node3D
+extends WorldEnvironment
 
 
 @onready var pause_menu = $"Pause Menu"
-@onready var start_text = $StartText
 
 var paused = false
-
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):

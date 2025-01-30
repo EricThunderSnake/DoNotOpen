@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://0kr00x1uf7h8"]
+
+[ext_resource type="Texture2D" uid="uid://udbgsbbf8xsx" path="res://Assets/Images/bar-bartender-tv.png" id="1_uuw6u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbjou"]
+size = Vector3(10.0733, 6.25014, 1)
+
+[node name="Bar" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_dbjou")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+texture = ExtResource("1_uuw6u")

@@ -1,15 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://hpm3y42bfkrr"]
+[gd_scene load_steps=2 format=3 uid="uid://cgl0ojfqutjji"]
 
-[ext_resource type="Script" path="res://start_dialogue.gd" id="1_aok4i"]
+[ext_resource type="Script" path="res://Dialogue/npc_dialogue.gd" id="1_7uimo"]
 
-[node name="Start Dialogue" type="Control"]
+[node name="NPC Dialogue" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_aok4i")
+script = ExtResource("1_7uimo")
 
 [node name="DialogueBG" type="ColorRect" parent="."]
 layout_mode = 1
@@ -26,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.501961)
 
-[node name="StartText" type="Label" parent="."]
+[node name="NPCText" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,11 +40,6 @@ offset_right = 327.0
 offset_bottom = 69.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "XX, XX, 2103
-
-Welcome operative.
-
-Your objective is to secure full control of the saloon and the surrounding terrain."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -62,5 +58,7 @@ offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Next"
+
+[node name="DialogueShow" type="Timer" parent="."]
 
 [connection signal="pressed" from="NextButton" to="." method="_on_continue_button_pressed"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ph4r0d3xis2s"]
+
+[ext_resource type="Texture2D" uid="uid://b0d21ymtnxss4" path="res://Assets/Images/picture-fraudulentkompromat.png" id="1_0abjf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbjou"]
+size = Vector3(2.87888, 2.0378, 0.347412)
+
+[node name="Kompromat" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.01, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+shape = SubResource("BoxShape3D_dbjou")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+texture = ExtResource("1_0abjf")
