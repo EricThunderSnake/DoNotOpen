@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm2pnjhdaetnw"]
+
+[ext_resource type="Texture2D" uid="uid://bmv4ntuqkbdod" path="res://Assets/Images/horsetied.png" id="1_80rmw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbjou"]
+size = Vector3(16.3961, 12.1743, 0.621826)
+
+[node name="Horse Tied" type="StaticBody3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_dbjou")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+texture = ExtResource("1_80rmw")

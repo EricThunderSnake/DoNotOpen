@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://djdp1mtlpg8ml"]
+
+[ext_resource type="Texture2D" uid="uid://b0hkh3imic6j4" path="res://Assets/Images/brokenroad.png" id="1_65i7j"]
+
+[node name="Broken Road" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.1, 0)
+texture = ExtResource("1_65i7j")

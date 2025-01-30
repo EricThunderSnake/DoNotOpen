@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2aqmvfe1pcm6"]
+
+[ext_resource type="Texture2D" uid="uid://8sguvmyfa8q" path="res://Assets/Images/walls.png" id="1_5wd4m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbjou"]
+size = Vector3(5.08374, 5.07428, 1)
+
+[node name="Wall" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dbjou")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_5wd4m")

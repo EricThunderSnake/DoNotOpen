@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://jea4gso4u3c6"]
+
+[ext_resource type="Script" path="res://Levels/Test/QuestManager.gd" id="1_1am47"]
+[ext_resource type="Script" path="res://Item/ItemManager.gd" id="2_hw1pa"]
+[ext_resource type="PackedScene" uid="uid://cq5dw6tsdy5s5" path="res://Item/Item.tscn" id="3_7fwep"]
+[ext_resource type="Script" path="res://Actor/ActorManager.gd" id="4_jl8mr"]
+[ext_resource type="PackedScene" uid="uid://cy1gj6npk7tb7" path="res://Actor/Actor.tscn" id="5_rmdro"]
+
+[node name="QuestManager" type="Node"]
+script = ExtResource("1_1am47")
+
+[node name="ItemManager" type="Node" parent="."]
+script = ExtResource("2_hw1pa")
+
+[node name="ItemUI" type="CanvasLayer" parent="ItemManager"]
+
+[node name="Pick Up Text" type="RichTextLabel" parent="ItemManager/ItemUI"]
+visible = false
+offset_left = 234.0
+offset_top = 473.0
+offset_right = 477.0
+offset_bottom = 498.0
+text = "Press E to pick up items"
+
+[node name="PresentItems" type="Node" parent="ItemManager"]
+
+[node name="Item" parent="ItemManager/PresentItems" instance=ExtResource("3_7fwep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.843843, 1.03957, 7.16795)
+
+[node name="Item2" parent="ItemManager/PresentItems" instance=ExtResource("3_7fwep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25496, 1, 6.80012)
+
+[node name="Item3" parent="ItemManager/PresentItems" instance=ExtResource("3_7fwep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05719, 1, -8.61207)
+
+[node name="ActorManager" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("4_jl8mr")
+
+[node name="ActorUI" type="CanvasLayer" parent="ActorManager"]
+visible = false
+
+[node name="ActorName" type="RichTextLabel" parent="ActorManager/ActorUI"]
+offset_left = 173.0
+offset_top = 276.0
+offset_right = 416.0
+offset_bottom = 301.0
+text = "11"
+
+[node name="DialogBox" type="RichTextLabel" parent="ActorManager/ActorUI"]
+offset_left = 177.0
+offset_top = 321.0
+offset_right = 420.0
+offset_bottom = 346.0
+text = "Pla2"
+
+[node name="PlayerResponse" type="RichTextLabel" parent="ActorManager/ActorUI"]
+offset_left = 178.0
+offset_top = 368.0
+offset_right = 421.0
+offset_bottom = 393.0
+text = "Whatgv"
+
+[node name="PresentActors" type="Node" parent="ActorManager"]
+process_mode = 1
+
+[node name="Actor" parent="ActorManager/PresentActors" node_paths=PackedStringArray("target") instance=ExtResource("5_rmdro")]
+process_physics_priority = 90
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922431, 1, -2.88784)
+target = NodePath("")
+follow_player = true

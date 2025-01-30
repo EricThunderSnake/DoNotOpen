@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b52b6ccffjat6"]
+
+[ext_resource type="Texture2D" uid="uid://b3u6nc60ms4aw" path="res://Assets/Images/customer2.png" id="1_yc82x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbjou"]
+size = Vector3(2.13169, 3.73301, 0.621826)
+
+[node name="CustomerTwo" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_dbjou")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+texture = ExtResource("1_yc82x")

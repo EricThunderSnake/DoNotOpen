@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpovkaudbisko"]
+
+[ext_resource type="Texture2D" uid="uid://c8rm7egkc6380" path="res://Assets/Images/sign.png" id="1_xcel0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbjou"]
+size = Vector3(2.54074, 4.46568, 0.621826)
+
+[node name="Sign" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_dbjou")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 2.25, 0)
+texture = ExtResource("1_xcel0")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://27ii32mywjab"]
+
+[ext_resource type="Texture2D" uid="uid://bqql0wqvtfmmt" path="res://Assets/Images/pokertable.png" id="1_cl2mu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbjou"]
+size = Vector3(3.10922, 3.38585, 0.621826)
+
+[node name="Poker Table" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+shape = SubResource("BoxShape3D_dbjou")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+texture = ExtResource("1_cl2mu")

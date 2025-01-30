@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpugugs73fyqp"]
+
+[ext_resource type="Texture2D" uid="uid://c7uebi8h32bhn" path="res://Assets/Images/cityindistance.png" id="1_eyggu"]
+
+[node name="City" type="Sprite3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 27, 0)
+texture = ExtResource("1_eyggu")

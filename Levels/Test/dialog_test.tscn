@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://dfvwcqgy5k5k5"]
+
+[ext_resource type="PackedScene" uid="uid://pvqt43lxq2nm" path="res://Player/Player.tscn" id="1_oloec"]
+[ext_resource type="PackedScene" uid="uid://cy1gj6npk7tb7" path="res://Actor/Actor.tscn" id="3_2mv88"]
+[ext_resource type="PackedScene" uid="uid://d15672pv2gjus" path="res://Target/Target.tscn" id="4_81514"]
+[ext_resource type="Script" path="res://Actor/ActorManager.gd" id="4_uq0tm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ida35"]
+energy_multiplier = 0.8
+
+[sub_resource type="Sky" id="Sky_jken0"]
+sky_material = SubResource("ProceduralSkyMaterial_ida35")
+
+[sub_resource type="Environment" id="Environment_pmaes"]
+background_mode = 2
+background_color = Color(0.0115899, 0.00853991, 0.0274126, 1)
+sky = SubResource("Sky_jken0")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_inbyj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k13xs"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r1mq3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fmrs1"]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_pmaes")
+camera_attributes = SubResource("CameraAttributesPractical_inbyj")
+
+[node name="Target" parent="." instance=ExtResource("4_81514")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09479, -9.53674e-07, -15.7375)
+
+[node name="Player" parent="." instance=ExtResource("1_oloec")]
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.69203, 0.721869, 0, -0.721869, 0.69203, 0, 12.6816, 9.5174)
+
+[node name="SkyLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999885, 0.0151663, 0, -0.0151663, 0.999885, 0, 0, 0)
+light_color = Color(0.741605, 0.475084, 0.0247729, 1)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 16.0
+
+[node name="Ground" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_k13xs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape3D_r1mq3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(512, 0, 0, 0, 512, 0, 0, 0, 512, 0, 0, 0)
+mesh = SubResource("PlaneMesh_fmrs1")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="ActorManager" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("4_uq0tm")
+
+[node name="ActorUI" type="CanvasLayer" parent="ActorManager"]
+visible = false
+
+[node name="ActorName" type="RichTextLabel" parent="ActorManager/ActorUI"]
+offset_left = 173.0
+offset_top = 276.0
+offset_right = 416.0
+offset_bottom = 301.0
+text = "11"
+
+[node name="DialogBox" type="RichTextLabel" parent="ActorManager/ActorUI"]
+offset_left = 177.0
+offset_top = 321.0
+offset_right = 420.0
+offset_bottom = 346.0
+text = "Pla2"
+
+[node name="PlayerResponse" type="RichTextLabel" parent="ActorManager/ActorUI"]
+offset_left = 178.0
+offset_top = 368.0
+offset_right = 421.0
+offset_bottom = 393.0
+text = "Whatgv"
+
+[node name="PresentActors" type="Node" parent="ActorManager"]
+process_mode = 1
+
+[node name="Actor" parent="ActorManager/PresentActors" node_paths=PackedStringArray("target") instance=ExtResource("3_2mv88")]
+process_physics_priority = 90
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922431, 1, -2.88784)
+target = NodePath("../../../Target")
+follow_player = true

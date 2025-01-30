@@ -1,0 +1,74 @@
+{"0":
+	{"0":
+		{"Name":"Gus",
+		"Responses":{
+			"0":{
+				"Text": "<< Continue >>",
+				"NextDialogID": 1
+			},
+		},
+		"Description":"A man glares at the player.",
+		"Speech":"I lost it ALL! Unless you've got some coin, beat it!"},
+	"1":
+		{"Name":"Gus",
+		"Responses":{
+			"0":{
+				"Text": "<< Continue >>",
+				"NextDialogID": 2
+			},
+		},
+		"Speech":"That fella/gal outside gives up too easy."},
+	"2":
+		{"Name":"Gus",
+		"Responses":{
+			"0":{
+				"Text": "<< End Conversation >>",
+				"NextDialogID": -1
+			},
+		},
+		"Speech":"Send 'em packin' so they stop their whinin'!"}
+	},
+"1":
+	{"0":
+		{"Responses":{
+			"0":{
+				"Text": "<< Hand Over Cash >>",
+				"NextDialogID": 1,
+				"Score":10
+			},
+			"1":{
+				"Text": "<< Hand Over Kompromat >>",
+				"NextDialogID": 2,
+				"Score":0
+			},
+			"2":{
+				"Text": "<< Hand Over Ticket >>",
+				"NextDialogID": 2,
+				"Score":0
+			},
+			"3":{
+				"Text": "<< Leave >>",
+				"NextDialogID": -1
+			},
+		},
+		"Description":"This guy only knows one language. Speak it."},
+	"1":
+		{"Name":"Gus",
+		"Responses":{
+			"0":{
+				"Text": "<< End Conversation >>",
+				"NextDialogID": -1
+			},
+		},
+		"Speech":"Yahoo! This takes care of next month's rent!"},
+	"2":
+		{"Name":"Gus",
+		"Responses":{
+			"0":{
+				"Text": "<< End Conversation >>",
+				"NextDialogID": -1
+			},
+		},
+		"Speech":"This won't pay for next month's rent!"},
+	},
+}
