@@ -10,7 +10,7 @@
 height = 0.001
 radius = 2.5
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player_depr" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_5r7de")
 

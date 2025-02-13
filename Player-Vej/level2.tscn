@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://883bfr0ypc2x"]
+
+[ext_resource type="Script" path="res://Obstacle-Vej/destructable.gd" id="1_k63dq"]
+[ext_resource type="PackedScene" uid="uid://bbgdijxyrs36k" path="res://Player.tscn" id="2_grhrw"]
+[ext_resource type="PackedScene" uid="uid://b8518mhbsh0gl" path="res://Player-Vej/Gus.tscn" id="5_pkdbb"]
+[ext_resource type="PackedScene" uid="uid://bid208c6g2rfm" path="res://Player-Vej/Cassie.tscn" id="6_lxgyf"]
+[ext_resource type="PackedScene" uid="uid://cqx4b1h183ltw" path="res://Player-Vej/Abigale.tscn" id="7_duuhn"]
+[ext_resource type="PackedScene" uid="uid://lsuj6pxyw7h0" path="res://Obstacle-Vej/Obstacle/Obstacle.tscn" id="8_iat1h"]
+[ext_resource type="PackedScene" uid="uid://bpovkaudbisko" path="res://Assets/Scenes/sign.tscn" id="8_pktub"]
+[ext_resource type="PackedScene" uid="uid://0kr00x1uf7h8" path="res://Assets/Scenes/bar.tscn" id="9_fkv7m"]
+[ext_resource type="PackedScene" uid="uid://6cgl2catq8kb" path="res://Obstacle-Vej/Destructable.tscn" id="10_4m6n2"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_k63dq")
+
+[node name="Player" parent="." instance=ExtResource("2_grhrw")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.03876, 2.61337, 4.07141)
+
+[node name="Ground" type="CSGBox3D" parent="."]
+transform = Transform3D(22, 0, 0, 0, 2, 0, 0, 0, 22, 6.16266, 0, -5.51108)
+use_collision = true
+size = Vector3(2.33453, 1, 1.48349)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.818039, 0.404202, 0.409185, 0, -0.711425, 0.702762, 0.575162, -0.574887, -0.581974, 7.45742, 6.41146, -11.7095)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.918301, 0.395882, 0, -0.395882, 0.918301, 0, 8.31097, 12.3083)
+
+[node name="gus_char" parent="." instance=ExtResource("5_pkdbb")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.61094, 2.7988, -7.00357)
+
+[node name="cassie_char" parent="." instance=ExtResource("6_lxgyf")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.422521, 2.86521, -7.26113)
+
+[node name="abigale_char" parent="." instance=ExtResource("7_duuhn")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 5.22895, 2.96567, -6.79497)
+disable_mode = 1
+
+[node name="Obstacle" parent="." instance=ExtResource("8_iat1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97909, 2.30299, -2.67181)
+script = null
+
+[node name="Obstacle2" parent="." instance=ExtResource("8_iat1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97909, 3.95292, -2.67181)
+script = null
+
+[node name="Sign" parent="." instance=ExtResource("8_pktub")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.27471, 3.43762, -3.52916)
+
+[node name="Bar" parent="." instance=ExtResource("9_fkv7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.75743, -16.0569)
+
+[node name="Box" parent="." instance=ExtResource("10_4m6n2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.91727, 2.10302, -2.26194)
+script = null
+
+[node name="Box2" parent="." instance=ExtResource("10_4m6n2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.48843, 2.9311, 2.10508)
+script = null

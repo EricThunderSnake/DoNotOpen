@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://bid208c6g2rfm"]
+
+[ext_resource type="Texture2D" uid="uid://ck8l2ijq8yiin" path="res://Player-Vej/Animations/Cassie/cassie_spritesheet.png" id="1_a8hy7"]
+[ext_resource type="Script" path="res://Player-Vej/cassie.gd" id="1_ebpyy"]
+[ext_resource type="FontFile" uid="uid://bn0kmguvk434x" path="res://Font/LibreCaslonText-Regular.ttf" id="3_wtom1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rt5j"]
+atlas = ExtResource("1_a8hy7")
+region = Rect2(0, 1520, 800, 1520)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbd1y"]
+atlas = ExtResource("1_a8hy7")
+region = Rect2(800, 1520, 800, 1520)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teyva"]
+atlas = ExtResource("1_a8hy7")
+region = Rect2(1600, 1520, 800, 1520)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf063"]
+atlas = ExtResource("1_a8hy7")
+region = Rect2(0, 0, 800, 1520)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mprqe"]
+atlas = ExtResource("1_a8hy7")
+region = Rect2(800, 0, 800, 1520)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uk4oj"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_7rt5j")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_sbd1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teyva")
+}],
+"loop": true,
+"name": &"final",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_pf063")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mprqe")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_of2eu"]
+height = 16.0
+radius = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogxvg"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_hwjcd"]
+material = SubResource("StandardMaterial3D_ogxvg")
+text = "Press E to Talk"
+font = ExtResource("3_wtom1")
+font_size = 127
+
+[node name="Cassie" type="CharacterBody3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 2.28909, 0)
+disable_mode = 2
+script = ExtResource("1_ebpyy")
+dialog_json = "res://Actor/Dialog/Cassie.json"
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uk4oj")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="ActorShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_of2eu")
+
+[node name="InteractText" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 8.4, 0)
+visible = false
+mesh = SubResource("TextMesh_hwjcd")
