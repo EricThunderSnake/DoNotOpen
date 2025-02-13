@@ -42,7 +42,7 @@
 				"Score":0
 			},
 			"2":{
-				"Text": "<< Hand Over Ticket >>",
+				"Text": "<< Hand Over Train Ticket >>",
 				"NextDialogID": 1,
 				"Score":10
 			},

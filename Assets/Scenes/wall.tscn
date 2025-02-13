@@ -2,13 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://8sguvmyfa8q" path="res://Assets/Images/walls.png" id="1_5wd4m"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dbjou"]
-size = Vector3(5.08374, 5.07428, 1)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dil6o"]
+points = PackedVector3Array(5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5)
 
 [node name="Wall" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_dbjou")
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_dil6o")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture = ExtResource("1_5wd4m")

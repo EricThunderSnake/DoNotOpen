@@ -1,22 +1,19 @@
 [gd_scene load_steps=7 format=3 uid="uid://btiah8ogwersj"]
 
 [ext_resource type="Script" path="res://Actor/actor.gd" id="1_f17g3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7g0hv"]
-albedo_color = Color(0.255627, 0.171783, 0.0683993, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_6ewwr"]
-material = SubResource("StandardMaterial3D_7g0hv")
+[ext_resource type="Texture2D" uid="uid://btlvws36tcrjf" path="res://Item/flyer.png" id="2_jspdg"]
+[ext_resource type="FontFile" uid="uid://bn0kmguvk434x" path="res://Font/LibreCaslonText-Regular.ttf" id="2_xvo8x"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ge677"]
 
-[sub_resource type="SystemFont" id="SystemFont_d67f5"]
-font_names = PackedStringArray("Fantasy")
-subpixel_positioning = 0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffutm"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_maoam"]
+material = SubResource("StandardMaterial3D_ffutm")
 text = "Press E to Read"
-font = SubResource("SystemFont_d67f5")
+font = ExtResource("2_xvo8x")
 font_size = 127
 
 [node name="Actor" type="CharacterBody3D"]
@@ -25,16 +22,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_f17g3")
 dialog_json = "res://Actor/Dialog/SaloonFlyer.json"
 
-[node name="ActorMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 1.24053e-05, -3.17692e-05, -2.75563e-05, 0.84274, -0.538321, 2.00953e-05, 0.538321, 0.84274, 0, 0, 0)
-mesh = SubResource("PlaneMesh_6ewwr")
-
 [node name="ActorShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_ge677")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="InteractText" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92336, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
 visible = false
 mesh = SubResource("TextMesh_maoam")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+modulate = Color(0.499263, 0.714666, 0.849245, 1)
+texture = ExtResource("2_jspdg")

@@ -10,13 +10,13 @@ material = SubResource("StandardMaterial3D_87r5f")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ge677"]
 
-[sub_resource type="SystemFont" id="SystemFont_d67f5"]
+[sub_resource type="SystemFont" id="SystemFont_8bpbf"]
 font_names = PackedStringArray("Fantasy")
 subpixel_positioning = 0
 
 [sub_resource type="TextMesh" id="TextMesh_maoam"]
 text = "Press E to Talk"
-font = SubResource("SystemFont_d67f5")
+font = SubResource("SystemFont_8bpbf")
 font_size = 127
 
 [node name="Abigale" type="CharacterBody3D"]

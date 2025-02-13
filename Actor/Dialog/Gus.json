@@ -17,7 +17,7 @@
 				"NextDialogID": 2
 			},
 		},
-		"Speech":"That fella/gal outside gives up too easy."},
+		"Speech":"That gal outside gives up too easy."},
 	"2":
 		{"Name":"Gus",
 		"Responses":{
@@ -42,7 +42,7 @@
 				"Score":0
 			},
 			"2":{
-				"Text": "<< Hand Over Ticket >>",
+				"Text": "<< Hand Over Train Ticket >>",
 				"NextDialogID": 2,
 				"Score":0
 			},

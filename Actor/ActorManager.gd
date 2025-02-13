@@ -19,10 +19,15 @@ const ticket = "Ticket"
 
 signal scene_finished(actor:Actor)
 
-@onready var actor_name : RichTextLabel = $ActorUI/VBoxContainer/ActorName
-@onready var description_box : RichTextLabel = $ActorUI/VBoxContainer/DescriptionBox
-@onready var speech_box : RichTextLabel = $ActorUI/VBoxContainer/DialogBox
-@onready var response_buttons : Array[Button] = [$"ActorUI/VBoxContainer/0", $"ActorUI/VBoxContainer/1", $"ActorUI/VBoxContainer/2", $"ActorUI/VBoxContainer/3"]
+@onready var actor_name : RichTextLabel = $ActorUI/MarginContainer/ActorName
+@onready var description_box : RichTextLabel = $ActorUI/MarginContainer/DescriptionBox
+@onready var speech_box : RichTextLabel = $ActorUI/MarginContainer/DialogBox
+@onready var response_buttons : Array[Button] = [$"ActorUI/MarginContainer/0", $"ActorUI/MarginContainer/1", $"ActorUI/MarginContainer/2", $"ActorUI/MarginContainer/3"]
+
+var actor_name_pos
+var description_box_pos
+var speech_box_pos
+
 
 const NULL_ID = -1
 @onready var present_actors = $PresentActors
@@ -39,9 +44,11 @@ var show_pick_up_text = false
 signal player_near_actor(actor_id:int)
 
 func _ready():
+	actor_name_pos = actor_name.position
+	description_box_pos = description_box.position
+	speech_box_pos = speech_box.position
 	for i in range(0, present_actors.get_child_count()):
 		var actor : Actor = present_actors.get_child(i)
-		#item.item_changed.connect(update_item_dict)
 		actor_dict[actor.id] = actor
 	player.start_dialog.connect(_on_start_dialog)
 	player.continue_dialog.connect(_on_continue_dialog)
@@ -64,7 +71,7 @@ func _on_start_dialog(id:int):
 		#speaking_actor.dialog_id = conversation["NextDialogID"]
 		display_buttons(conversation)
 		actor_ui.visible = true
-		get_tree().paused = true
+		Engine.time_scale = 0
 
 func _on_continue_dialog(choice:String):
 	var scene_id = str(speaking_actor.scene_id)
@@ -88,13 +95,13 @@ func _on_continue_dialog(choice:String):
 		actor_name.text = ""
 		speech_box.text = ""
 		hide_buttons()
-		print(player.inventory)
 		scene_finished.emit(speaking_actor)
-		get_tree().paused = false
+		Engine.time_scale = 1
 		player.is_in_dialog = false
 
 func display_name(conversation:Dictionary) -> void:
 	if speaker_name in conversation.keys():
+		actor_name.position = actor_name_pos
 		actor_name.custom_minimum_size = Vector2(0,24)
 		actor_name.text = conversation[speaker_name]
 		actor_name.visible = true
@@ -105,6 +112,10 @@ func display_name(conversation:Dictionary) -> void:
 
 func display_description(conversation:Dictionary) -> void:
 	if description in conversation.keys():
+		if speaker_name not in conversation.keys():
+			description_box.position = actor_name_pos
+		else:
+			description_box.position = description_box_pos
 		description_box.custom_minimum_size = Vector2(0,24)
 		description_box.text = conversation[description]
 		description_box.visible = true
@@ -115,6 +126,12 @@ func display_description(conversation:Dictionary) -> void:
 
 func display_speech(conversation:Dictionary) -> void:
 	if speech in conversation.keys():
+		if speaker_name not in conversation.keys() && description not in conversation.keys():
+			speech_box.position = actor_name_pos
+		elif description not in conversation.keys():
+			speech_box.position = description_box_pos
+		else:
+			speech_box.position = speech_box_pos
 		speech_box.custom_minimum_size = Vector2(0,24)
 		speech_box.text = conversation[speech]
 		speech_box.visible = true
@@ -125,7 +142,6 @@ func display_speech(conversation:Dictionary) -> void:
 
 func display_buttons(conversation:Dictionary) -> void:
 	var num_of_responses = conversation[responses].size()
-	print(num_of_responses)
 	if num_of_responses == 1:
 		var button : Button = response_buttons[0]
 		button.custom_minimum_size = Vector2(0,24)
@@ -215,15 +231,21 @@ func handle_inventory_and_score(id:int):
 	if cash in button.text:
 		speaking_actor.has_item = true
 		player.inventory[Item.TYPE.CASH] = false
-		if speaker_name == "Gus":
+		if speaking_actor.name == "Gus":
 			speaking_actor.has_correct_item = true
+			var gus :Gus = speaking_actor
+			gus.current_state = Gus.State.final
 	elif kompromat in button.text:
 		speaking_actor.has_item = true
 		player.inventory[Item.TYPE.KOMPROMAT] = false
-		if speaker_name == "Cassie":
+		if speaking_actor.name == "Cassie":
 			speaking_actor.has_correct_item = true
+			var cassie :Cassie = speaking_actor
+			cassie.current_state = Cassie.State.final
 	elif ticket in button.text:
 		speaking_actor.has_item = true
 		player.inventory[Item.TYPE.TICKET] = false
-		if speaker_name == "Abigale":
+		if speaking_actor.name == "Abigale":
 			speaking_actor.has_correct_item = true
+			var abigale :Abigale = speaking_actor
+			abigale.current_state = Abigale.State.final

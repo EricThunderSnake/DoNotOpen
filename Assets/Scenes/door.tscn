@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvts27lwiy802"]
+
+[ext_resource type="Texture2D" uid="uid://03o4wyotwotx" path="res://Assets/Images/door.png" id="1_deleb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbjou"]
+size = Vector3(5.08374, 5.07428, 1)
+
+[node name="Door" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dbjou")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_deleb")
