@@ -1,11 +1,12 @@
 extends Control
+@onready var audio_stream_player = $"../AudioStreamPlayer"
 
 var dialogue = [
-	"XX, XX, 2103\nWelcome operative.\nYour objective is to secure full control of the saloon and the surrounding terrain.",
+	"XX, XX, 2103\n\nWelcome operative.\n\nYour objective is to secure full control of the interior and exterior of the saloon.",
 	
-	"There are three inhabitants that interfere with your objective.\nEveryone has a weakness.\nGather intelligence to force the inhabitants into surrender.",
+	"There are three inhabitants that interfere with your objective.\n\nEveryone has a weakness.\n\nGather intelligence to force the inhabitants into surrender.",
 	
-	"Although you may engage in combat, it may cause collalteral damage.\nWhichever method you choose, ensure success by any means necessary.\nGood luck.",
+	"Good luck.",
 ]
 
 var current_line = 0
@@ -29,6 +30,7 @@ func update_dialogue():
 		Engine.time_scale = 1
 		#Hides entire start dialogue
 		$".".hide()
+		
 
 
 func _on_continue_button_pressed() -> void:
