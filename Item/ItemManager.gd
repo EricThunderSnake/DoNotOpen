@@ -67,7 +67,6 @@ func pick_up_one_at_time() -> void:
 			var item : Item = item_dict[id][object]
 			if item.type == Item.TYPE.CASH:
 				player.inventory[cash] = true
-				print(player.inventory)
 			elif item.type == Item.TYPE.KOMPROMAT:
 				player.inventory[kompromat] = true
 			elif item.type == Item.TYPE.TICKET:

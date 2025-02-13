@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvq1botfrhfp8"]
+
+[ext_resource type="Theme" uid="uid://j5ewwqeuj3cl" path="res://Menus/game_theme.tres" id="1_d8wtv"]
+[ext_resource type="FontFile" uid="uid://bn0kmguvk434x" path="res://Font/LibreCaslonText-Regular.ttf" id="2_4s351"]
+[ext_resource type="Script" path="res://Menus/back.gd" id="2_u7745"]
+
+[node name="EndingBad" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 177.0
+offset_top = 240.0
+offset_right = 855.0
+offset_bottom = 432.0
+grow_horizontal = 2
+rotation = 3.14159
+theme = ExtResource("1_d8wtv")
+theme_override_fonts/font = ExtResource("2_4s351")
+theme_override_font_sizes/font_size = 130
+text = "The End."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Controls" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -406.0
+offset_top = -143.0
+offset_right = 486.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_d8wtv")
+theme_override_fonts/font = ExtResource("2_4s351")
+theme_override_font_sizes/font_size = 28
+text = "You did not
+remove all targets 
+within the vicinity.
+
+Run........................................................................................................
+
+xOxXOoXo
+Ms Criveway"
+horizontal_alignment = 2
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 2
+offset_left = 54.0
+offset_top = 695.0
+offset_right = 265.0
+offset_bottom = 758.0
+size_flags_horizontal = 3
+theme = ExtResource("1_d8wtv")
+text = "Main Menu"
+script = ExtResource("2_u7745")
+
+[connection signal="pressed" from="Back" to="Back" method="_on_pressed"]

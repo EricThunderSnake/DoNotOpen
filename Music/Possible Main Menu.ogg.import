@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://huys3jtjd7m1"
+path="res://.godot/imported/Possible Main Menu.ogg-197e9dcc88262a77532006e4e0747b55.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Possible Main Menu.ogg"
+dest_files=["res://.godot/imported/Possible Main Menu.ogg-197e9dcc88262a77532006e4e0747b55.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

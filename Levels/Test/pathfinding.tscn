@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://0uorj88r5rnr"]
 
-[ext_resource type="PackedScene" uid="uid://pvqt43lxq2nm" path="res://Player/Player.tscn" id="1_f2ovd"]
+[ext_resource type="PackedScene" uid="uid://pvqt43lxq2nm" path="res://Player/Player_depr.tscn" id="1_f2ovd"]
 [ext_resource type="PackedScene" uid="uid://cy1gj6npk7tb7" path="res://Actor/Actor.tscn" id="1_np08h"]
 [ext_resource type="PackedScene" uid="uid://d15672pv2gjus" path="res://Target/Target.tscn" id="2_047xe"]
 
@@ -60,8 +60,8 @@ transform = Transform3D(1, 0, 0, 0, 0.69203, 0.721869, 0, -0.721869, 0.69203, 0,
 
 [node name="NPC" parent="Node3D" node_paths=PackedStringArray("target") instance=ExtResource("1_np08h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5.29523)
-follow_player = true
 target = NodePath("../../Target")
+follow_player = true
 
 [node name="Target" parent="." node_paths=PackedStringArray("next_target") instance=ExtResource("2_047xe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.67525, 0.555522, -0.329767)

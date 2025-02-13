@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddyaet1jiwns2"]
+[gd_scene load_steps=4 format=3 uid="uid://ddyaet1jiwns2"]
 
 [ext_resource type="Script" path="res://Menus/back.gd" id="1_ok1ii"]
+[ext_resource type="Theme" uid="uid://j5ewwqeuj3cl" path="res://Menus/game_theme.tres" id="1_qihcr"]
+[ext_resource type="FontFile" uid="uid://bn0kmguvk434x" path="res://Font/LibreCaslonText-Regular.ttf" id="2_4ofqd"]
 
 [node name="Controls" type="Control"]
 layout_mode = 3
@@ -17,20 +19,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.811866, 0.626964, 0.430132, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -169.0
-offset_top = 27.0
-offset_right = 169.0
-offset_bottom = 115.0
+offset_left = 334.0
+offset_top = 691.0
+offset_right = 888.0
+offset_bottom = 864.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 64
-text = "CONTROLS"
+rotation = -1.5708
+theme = ExtResource("1_qihcr")
+theme_override_fonts/font = ExtResource("2_4ofqd")
+theme_override_font_sizes/font_size = 140
+text = "Controls"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -41,26 +46,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -169.0
-offset_top = -70.5
-offset_right = 169.0
-offset_bottom = 70.5
+offset_left = -398.0
+offset_top = -236.0
+offset_right = 112.0
+offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Movement - WASD
+theme = ExtResource("1_qihcr")
+theme_override_fonts/font = ExtResource("2_4ofqd")
+theme_override_font_sizes/font_size = 28
+text = "Movement - WASD or Arrow Keys
 Interaction - E
-Pause - Esc"
-horizontal_alignment = 1
+Dash - F or Shift or Left Mouse Click
+Jump - Spacebar
+Pause - Escape"
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 2
-offset_left = 375.0
-offset_top = 438.0
-offset_right = 586.0
-offset_bottom = 501.0
+offset_left = 160.0
+offset_top = 546.0
+offset_right = 371.0
+offset_bottom = 609.0
 size_flags_horizontal = 3
+theme = ExtResource("1_qihcr")
 text = "Back"
 script = ExtResource("1_ok1ii")
-
-[connection signal="pressed" from="Back" to="Back" method="_on_pressed"]

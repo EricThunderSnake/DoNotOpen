@@ -1,77 +1,122 @@
-[gd_scene load_steps=2 format=3 uid="uid://brebdi50yq4sl"]
+[gd_scene load_steps=18 format=3 uid="uid://brebdi50yq4sl"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_h4uwb"]
+[ext_resource type="Theme" uid="uid://j5ewwqeuj3cl" path="res://Menus/game_theme.tres" id="2_48aql"]
+[ext_resource type="AudioStream" uid="uid://huys3jtjd7m1" path="res://Music/Possible Main Menu.ogg" id="2_rarbm"]
+[ext_resource type="FontFile" uid="uid://bn0kmguvk434x" path="res://Font/LibreCaslonText-Regular.ttf" id="3_otgt5"]
+[ext_resource type="PackedScene" uid="uid://ddyaet1jiwns2" path="res://Menus/controls_menu.tscn" id="4_eyr26"]
+[ext_resource type="PackedScene" uid="uid://wvgee2rfg63w" path="res://Menus/credits_menu.tscn" id="4_h30sh"]
 
-[node name="Main Menu" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0p3o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rg40s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qxd21"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rd0dm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pg14h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qn87l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mkbh7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gw8x4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pqsib"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ywauo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3nnec"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_h4uwb")
+
+[node name="Main Menu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_h4uwb")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Main Menu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.811765, 0.627451, 0.431373, 1)
+color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Main Menu"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -200.5
-offset_right = 200.5
-offset_bottom = 118.0
+offset_left = -478.0
+offset_top = 775.0
+offset_right = 153.0
+offset_bottom = 942.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 64
-text = "Do Not Open"
+rotation = -1.5708
+theme = ExtResource("2_48aql")
+theme_override_fonts/font = ExtResource("3_otgt5")
+theme_override_font_sizes/font_size = 135
+text = "Bull Head"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -112.5
-offset_top = -85.0
-offset_right = 112.5
-offset_bottom = 85.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Main Menu"]
+stream = ExtResource("2_rarbm")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu"]
 layout_mode = 2
+offset_left = 519.0
+offset_top = 209.0
+offset_right = 744.0
+offset_bottom = 394.0
 
-[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Start" type="Button" parent="Main Menu/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_48aql")
 text = "Start"
 vertical_icon_alignment = 2
 
-[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Controls" type="Button" parent="Main Menu/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_48aql")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v0p3o")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_rg40s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qxd21")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_rd0dm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_pg14h")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_qn87l")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mkbh7")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_gw8x4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pqsib")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ywauo")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3nnec")
 text = "Controls"
 vertical_icon_alignment = 2
 
-[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="Main Menu/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Settings"
 vertical_icon_alignment = 2
 
-[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="Main Menu/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_48aql")
 text = "Credits"
 vertical_icon_alignment = 2
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[node name="Controls" parent="." instance=ExtResource("4_eyr26")]
+visible = false
+
+[node name="Credits" parent="." instance=ExtResource("4_h30sh")]
+visible = false

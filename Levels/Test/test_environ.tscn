@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cwwcthwxxh4x3"]
 
-[ext_resource type="PackedScene" uid="uid://pvqt43lxq2nm" path="res://Player/Player.tscn" id="1_digor"]
+[ext_resource type="PackedScene" uid="uid://pvqt43lxq2nm" path="res://Player/Player_depr.tscn" id="1_digor"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ida35"]
 energy_multiplier = 0.8
